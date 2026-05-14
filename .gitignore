@@ -1,0 +1,15 @@
+# R 語言相關雜物
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# AI Agent 產生的暫存與設定
+.lintr
+files.txt
+.agent/
+output/
+
+# 系統雜物
+Thumbs.db
+.DS_Store

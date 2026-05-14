@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認識鳥蛋的形狀！</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game-wrapper">
+        <h1>鳥蛋形狀大配對！</h1>
+        <p>原來鳥蛋的形狀、蛋殼的硬度都不是單純的巧合，是鳥類適應飛行和環境的重要特徵。現在請你試看看能著把下面不同形狀的蛋蛋拖到正確的框框裡吧！</p>
+
+        <div class="game-container">
+            <!-- 放置可拖曳蛋 (Draggable Items) 的區域 -->
+            <div class="eggs-container">
+                <h2>從這裡選蛋</h2>
+                <img src="images/egg_round.png" alt="圓圓的蛋" class="draggable-egg" id="egg1" draggable="true"
+                    data-shape="round">
+                <img src="images/egg_oval.png" alt="長長的蛋" class="draggable-egg" id="egg2" draggable="true"
+                    data-shape="oval">
+                <img src="images/egg_pointy.png" alt="尖尖的蛋" class="draggable-egg" id="egg3" draggable="true"
+                    data-shape="pointy">
+            </div>
+
+            <!-- 放置輪廓 (Drop Zones) 的區域 -->
+            <div class="outlines-container">
+                <h2>把蛋拖到這裡</h2>
+                <div class="outline-wrapper">
+                    <div class="outline" id="outline-oval" data-shape="oval">
+                        <div class="card-front">
+                            <img src="images/outline_oval.png" alt="橢圓形輪廓" class="outline-image">
+                            <span>長長的蛋</span>
+                            <span class="flip-hint">↻</span>
+                        </div>
+                        <div class="card-back">
+                            <img src="images/bird_oval.jpeg" alt="橢圓形蛋的鳥" class="bird-image">
+                            <span class="flip-hint">&#x21BB;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="outline-wrapper">
+                    <div class="outline" id="outline-pointy" data-shape="pointy">
+                        <div class="card-front">
+                            <img src="images/outline_pointy.png" alt="尖尖的輪廓" class="outline-image">
+                            <span>尖尖的蛋</span>
+                            <span class="flip-hint">↻</span>
+                        </div>
+                        <div class="card-back">
+                            <img src="images/bird_pointy.png" alt="尖尖形蛋的鳥" class="bird-image">
+                            <span class="flip-hint">&#x21BB;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="outline-wrapper">
+                    <div class="outline" id="outline-round" data-shape="round">
+                        <div class="card-front">
+                            <img src="images/outline_round.png" alt="圓形輪廓" class="outline-image">
+                            <span>比較圓的蛋</span>
+                            <span class="flip-hint">↻</span>
+                        </div>
+                        <div class="card-back">
+                            <img src="images/bird_round.png" alt="圓形蛋的鳥" class="bird-image">
+                            <span class="flip-hint">&#x21BB;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="feedback"></div>
+        <button id="reset-button">重新玩一次</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
