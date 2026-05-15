@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let initialOffsetY = 0;      // 觸控點相對於蛋左上角的偏移 Y
     let isGameComplete = false;  // 追蹤遊戲是否已完成
 
+    // 確保圖片載入後，固定 eggsContainer 的最小高度，避免拖曳後版面縮水跳動
+    window.addEventListener('load', () => {
+        eggsContainer.style.minHeight = eggsContainer.offsetHeight + 'px';
+    });
+
     // --- Helper Function: 取得觸控點對應的輪廓 ---
     function getOutlineFromPoint(x, y) {
         // 暫時隱藏正在拖曳的元素，避免 elementFromPoint 選到自己
@@ -260,14 +265,14 @@ document.addEventListener('DOMContentLoaded', () => {
             feedback.innerHTML = '答對了！形狀一樣耶！讓我們來看看這是誰的蛋。<br>點擊鳥兒卡片，可以對照蛋的形狀喔！';
             feedback.classList.add('completion-banner');
 
-            // 隱藏上方的選蛋區
-            eggsContainer.style.display = 'none';
-            // 隱藏「把蛋拖到這裡」標題
-            document.querySelector('.outlines-container h2').style.display = 'none';
+            // 隱藏選蛋區文字與下方標題，但保留空間避免版面跳動
+            const desc = eggsContainer.querySelector('.description');
+            if (desc) desc.style.visibility = 'hidden';
+            document.querySelector('.outlines-container h2').style.visibility = 'hidden';
 
-            // 將 feedback 移到 outlines-container 正上方
-            const outlinesContainer = document.querySelector('.outlines-container');
-            outlinesContainer.parentNode.insertBefore(feedback, outlinesContainer);
+            // 將 feedback 移到 eggs-container 內部疊加
+            eggsContainer.style.position = 'relative';
+            eggsContainer.appendChild(feedback);
 
             // 顯示重置按鈕
             resetButton.style.display = 'block';
@@ -309,10 +314,12 @@ document.addEventListener('DOMContentLoaded', () => {
         feedback.innerHTML = '';
         feedback.style.color = '';
         feedback.classList.remove('completion-banner');
-        // 恢復上方的選蛋區
-        eggsContainer.style.display = '';
-        // 恢復「把蛋拖到這裡」標題
-        document.querySelector('.outlines-container h2').style.display = '';
+        // 恢復選蛋區文字與下方標題
+        const desc = eggsContainer.querySelector('.description');
+        if (desc) desc.style.visibility = '';
+        document.querySelector('.outlines-container h2').style.visibility = '';
+        eggsContainer.style.position = '';
+
         // 將 feedback 移回 game-container 之後的原始位置
         const gameContainer = document.querySelector('.game-container');
         gameContainer.parentNode.insertBefore(feedback, gameContainer.nextSibling);
