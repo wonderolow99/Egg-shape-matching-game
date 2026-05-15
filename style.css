@@ -461,10 +461,10 @@ p {
 
 /* 頁尾標示 (典藏者) */
 .footer {
-    text-align: right;
+    text-align: center;
     font-size: 0.8em;
     color: #7a4a1e;
     margin-top: 15px;
-    padding-right: 10px;
+    padding: 0;
     opacity: 0.8;
 }
