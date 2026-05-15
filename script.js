@@ -269,6 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const outlinesContainer = document.querySelector('.outlines-container');
             outlinesContainer.parentNode.insertBefore(feedback, outlinesContainer);
 
+            // 顯示重置按鈕
+            resetButton.style.display = 'block';
+
             // 延遲 1 秒後翻轉卡牌
             setTimeout(() => {
                 outlines.forEach(outline => outline.classList.add('flipped'));
@@ -317,6 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
         draggedItem = null; // 清除狀態
         currentOverOutline = null;
         isGameComplete = false;
+        // 重新隱藏重置按鈕
+        resetButton.style.display = 'none';
     });
 
 }); // DOMContentLoaded 結束
