@@ -3,7 +3,8 @@ body {
     font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
     line-height: 1.4;
     padding: 5px;
-    background-image: url('images/自然史風1.png');
+    background-color: #e3d3b7; /* 預設羊皮紙底色，防止載入背景圖前出現白頻 */
+    background-image: url('images/自然史風1.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
