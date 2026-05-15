@@ -262,17 +262,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const allMatched = Array.from(outlines).every(outline => outline.classList.contains('matched'));
         if (allMatched) {
             isGameComplete = true;
-            feedback.innerHTML = '答對了！形狀一樣耶！讓我們來看看這是誰的蛋。<br>點擊鳥兒卡片，可以對照蛋的形狀喔！';
-            feedback.classList.add('completion-banner');
 
-            // 隱藏選蛋區文字與下方標題，但保留空間避免版面跳動
+            // 隱藏選蛋區文字，顯示頂部橫幅
             const desc = eggsContainer.querySelector('.description');
-            if (desc) desc.style.visibility = 'hidden';
-            document.querySelector('.outlines-container h2').style.visibility = 'hidden';
+            if (desc) desc.style.display = 'none';
+            document.getElementById('completion-banner').style.display = 'block';
 
-            // 將 feedback 移到 eggs-container 內部疊加
-            eggsContainer.style.position = 'relative';
-            eggsContainer.appendChild(feedback);
+            feedback.innerHTML = '點擊鳥兒卡片，可以對照蛋的形狀喔！';
+            feedback.style.color = 'green';
 
             // 顯示重置按鈕
             resetButton.style.display = 'block';
@@ -311,18 +308,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        feedback.innerHTML = '';
-        feedback.style.color = '';
-        feedback.classList.remove('completion-banner');
-        // 恢復選蛋區文字與下方標題
         const desc = eggsContainer.querySelector('.description');
-        if (desc) desc.style.visibility = '';
-        document.querySelector('.outlines-container h2').style.visibility = '';
-        eggsContainer.style.position = '';
+        if (desc) desc.style.display = '';
+        document.getElementById('completion-banner').style.display = 'none';
 
-        // 將 feedback 移回 game-container 之後的原始位置
-        const gameContainer = document.querySelector('.game-container');
-        gameContainer.parentNode.insertBefore(feedback, gameContainer.nextSibling);
+        feedback.innerHTML = '把蛋拖到這裡';
+        feedback.style.color = '';
 
         draggedItem = null; // 清除狀態
         currentOverOutline = null;

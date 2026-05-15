@@ -17,6 +17,7 @@
             <!-- 放置可拖曳蛋 (Draggable Items) 的區域 -->
             <div class="eggs-container">
                 <p class="description">原來鳥蛋的形狀、蛋殼的硬度都不是單純的巧合，是鳥類適應飛行和環境的重要特徵。現在請你試看看能著把下面不同形狀的蛋蛋拖到正確的框框裡吧！</p>
+                <div id="completion-banner" style="display: none;">答對了! 形狀一樣耶!<br>讓我們來看看這是誰的蛋。</div>
                 <img src="images/egg_round.png" alt="像乒乓球的蛋" class="draggable-egg" id="egg1" draggable="true"
                     data-shape="round">
                 <img src="images/egg_oval.png" alt="橢圓形的蛋" class="draggable-egg" id="egg2" draggable="true"
@@ -27,7 +28,7 @@
 
             <!-- 放置輪廓 (Drop Zones) 的區域 -->
             <div class="outlines-container">
-                <h2>把蛋拖到這裡</h2>
+                <h2 id="feedback">把蛋拖到這裡</h2>
                 <div class="outline-wrapper">
                     <div class="outline" id="outline-oval" data-shape="oval">
                         <div class="card-front">
@@ -73,7 +74,6 @@
             </div>
         </div>
 
-        <div id="feedback"></div>
         <button id="reset-button">再玩一次!</button>
     </div>
 
